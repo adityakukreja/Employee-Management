@@ -1,23 +1,26 @@
 <p-panel header="Employee Management System">
   <h3>First Name</h3>
 <span class="ui-float-label">
-  <input id="float-input" type="text" [(ngModel)]="employee.firstname" size="30" pInputText required >
-  <label for="float-input">First Name</label>
+  <input id="float-input" type="text" [(ngModel)]="employee.FirstName" size="30" pInputText required >
 </span>
 <h3>Last Name</h3>
 <span class="ui-float-label">
-  <input id="float-input" type="text" [(ngModel)]="employee.lastname" size="30" pInputText required> 
-  <label for="float-input">Last Name</label>
+  <input id="float-input" type="text" [(ngModel)]="employee.LastName" size="30" pInputText required> 
 </span>
-<h3>Age</h3>
+<h3>DOB</h3>
 <span class="ui-float-label">
-  <input id="float-input" type="text" size="30" [(ngModel)]="employee.age" pInputText required> 
-  <label for="float-input">Age</label>
+  <input id="float-input" type="date" [(ngModel)]="employee.DOB" required> 
 </span>
-<h3 class="first">Designation</h3>
+<h3 class="first">Gender</h3>
 <span class="ui-float-label">
-  <input id="float-input" type="text" size="30" [(ngModel)]="employee.designation" pInputText required> 
-  <label for="float-input">Designation</label>
+  <input id="float-input" type="radio" name="Male" value="Male" [(ngModel)]="employee.Gender" (change)="OnItemChange($event.target.value)" required> Male
+    <input id="float-input" type="radio" name="Female" value="Female" [(ngModel)]="employee.Gender" (change)="OnItemChange($event.target.value)" required> Female
+</span>
+<h3 class="first">Department</h3>
+<span class="ui-float-label">
+  <select name="department" [(ngModel)]="employee.Department" id="cars">
+    <option *ngFor="let val of department" value="{{val}}">{{val}}</option>
+  </select>
 </span>
 <p-footer>
   <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em" (click)="updateEmployee()"></button>

@@ -9,22 +9,18 @@ import { Employee } from '../entity/Employee';
 })
 export class EmployeedetailComponent {
 
-  // Input variable to display properties of an employee
   @Input() employee: Employee;
 
-  // Output variable used to tell the parent component to refesh the employee list after successful delete
   @Output() refreshEmployeeList: EventEmitter<boolean> = new EventEmitter<boolean>();
   
-  // Service injected in constructor
+  
   constructor(private employeeService: EmployeeService, private router: Router) { 
   }
 
-  // Method to edit employee details
   editEmployee(){
     this.router.navigate(["EditEmployee/"+ this.employee.id]);
   }
   
-  // Method to delete an employee
   deleteEmployee(employeeToBeDeleted: Employee){
     var result = confirm("Are you sure, you want to delete this Employee?");
     if (result) {

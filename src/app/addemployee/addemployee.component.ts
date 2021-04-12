@@ -8,26 +8,30 @@ import { Employee } from '../entity/Employee';
 })
 export class AddemployeeComponent {
 
-  firstname:string;
-  lastname:string;
-  age:number;
-  designation:string;
+  FirstName:string;
+  LastName:string;
+  DOB:string;
+  Gender:string;
+  Department:string;
   employee: Employee;
+  department : string[]=["Production","Purchasing","Marketing","HRD"]
 
-  // Services injected in constructor
   constructor(private employeeService: EmployeeService, private router: Router) { 
   }
 
   // Method to save an employee
   saveEmployee(){
-    this.employee = new Employee(this.makeRandomID(), this.firstname, this.lastname, this.age, this.designation);
+    this.employee = new Employee(this.makeRandomID(), this.FirstName, this.LastName, this.DOB, this.Gender,this.Department);
     this.employeeService.addEmployee(this.employee);
     this.router.navigate(["Employees"]);
   }
 
-  // Method to cancel the add operation
   cancelEmployee(){
     this.router.navigate(["Employees"]);
+  }
+
+  OnItemChange(value : any){
+    this.Gender = value;
   }
 
   // Creates random id for employee
@@ -39,5 +43,9 @@ export class AddemployeeComponent {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
+  }
+
+  OnItemSelect(value : any){
+    this.Department = value;
   }
 }

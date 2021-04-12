@@ -1,24 +1,28 @@
 <p-panel header="Employee Management System">
     <h3>First Name</h3>
 <span class="ui-float-label">
-    <input id="float-input" type="text" [(ngModel)]="firstname" size="30" pInputText required >
-    <label for="float-input">First Name</label>
+    <input id="float-input" type="text" [(ngModel)]="FirstName" size="30" pInputText required >
 </span>
 <h3>Last Name</h3>
 <span class="ui-float-label">
-    <input id="float-input" type="text" [(ngModel)]="lastname" size="30" pInputText required> 
-    <label for="float-input">Last Name</label>
+    <input id="float-input" type="text" [(ngModel)]="LastName" size="30" pInputText required> 
 </span>
-<h3>Age</h3>
+<h3>DOB</h3>
 <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" [(ngModel)]="age" pInputText required> 
-    <label for="float-input">Age</label>
-</span>
-<h3 class="first">Designation</h3>
+    <input id="float-input" type="date" [(ngModel)]="DOB" required> 
+  </span>
+<h3 class="first">Gender</h3>
 <span class="ui-float-label">
-    <input id="float-input" type="text" size="30" [(ngModel)]="designation" pInputText required> 
-    <label for="float-input">Designation</label>
+    <input id="float-input" type="radio" name="Male" value="Male" [(ngModel)]="Gender" (change)="OnItemChange($event.target.value)" required> Male
+    <input id="float-input" type="radio" name="Female" value="Female" [(ngModel)]="Gender" (change)="OnItemChange($event.target.value)" required> Female
 </span>
+<h3 class="first">Department</h3>
+<span class="ui-float-label">
+    <select name="department" [(ngModel)]="Department" id="cars">
+        <option *ngFor="let val of department" (click)="OnItemSelect($event.target.value)" value="{{val}}">{{val}}</option>
+      </select>
+</span>
+
 <p-footer>
     <button pButton type="button" label="Save" icon="pi pi-check" style="margin-right: .25em" (click)="saveEmployee()"></button>
     <button pButton type="button" label="Cancel" icon="pi pi-times" class="ui-button-secondary" (click)="cancelEmployee()"></button>

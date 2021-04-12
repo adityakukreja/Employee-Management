@@ -1,19 +1,22 @@
 export class Employee {
     id:string;
-    firstname:string;
-    lastname:string;
-    age:number;
-    designation:string;
+    FirstName:string;
+    LastName:string;
+    DOB:string;
+    Gender:string;
+    Department:string;
 
     constructor(id:string,
-        firstname:string,
-        lastname:string,
-        age:number,
-        designation:string){
+        FirstName:string,
+        LastName:string,
+        DOB:string,
+        Gender:string,
+        Department:string){
             this.id = id;
-            this.firstname = firstname;
-            this.lastname = lastname;
-            this.age = age;
-            this.designation = designation;
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.DOB = DOB;
+            this.Gender = Gender;
+            this.Department = Department;
         }
 }
